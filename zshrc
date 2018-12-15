@@ -155,3 +155,6 @@ export PATH="/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/bin:
 
 # tree
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+# subl
+export PATH=/Library/SublimeText/bin:$PATH

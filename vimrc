@@ -115,6 +115,17 @@ Plug 'vim-scripts/surround.vim'
 Plug 'tpope/vim-bundler'
 Plug 'vim-scripts/a.vim'
 Plug 'tpope/vim-abolish'
+Plug 'mileszs/ack.vim'
+Plug 'lervag/vimtex'
+Plug 'vim-scripts/CycleColor'
+Plug 'vhda/verilog_systemverilog.vim'
+Plug 'vim-scripts/vim-xdc-syntax'
+Plug 'vim-scripts/ucf.vim'
+"Plug 'harenome/vim-mipssyntax'
+Plug 'ARM9/mips-syntax-vim'
+Plug 'vim-scripts/SQLComplete.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'qpkorr/vim-bufkill'
 call plug#end()
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -125,7 +136,7 @@ runtime macros/matchit.vim
 
 set pastetoggle=<f5>
 set tabstop=4
-colorscheme industry
+colorscheme industry2
 
 " page 162 example
 " set nocompatible
@@ -159,8 +170,43 @@ set expandtab
 " tabs
 
 nnoremap <f5> :!ctags -R<CR>
-autocmd BufWritePost * call system("ctags -R")
+" autocmd BufWritePost * call system("ctags -R")
 " ctags
 
-nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+nnoremap <buffer> <F9> :w<CR> :exec '!python' shellescape(@%, 1)<cr>
 " python
+
+highlight LineNr ctermfg=grey
+" line number
+
+set grepprg=ack\ --nogroup\ --column\ $*
+set grepformat=%f:%l:%c:%m
+" ack
+
+set complete-=i
+" keyword completion
+
+set mouse=niv
+set clipboard=unnamed
+" smooth scrolling
+
+runtime macros/matchit.vim
+nnoremap <leader>i :VerilogFollowInstance<CR>
+nnoremap <leader>I :VerilogFollowPort<CR>
+nnoremap <leader>u :VerilogGotoInstanceStart<CR>
+let g:SuperTabDefaultCompletionType = 'context'
+" verilog
+
+set nobackup
+" no backup files
+
+au BufNewFile,BufRead *.s,*.S set filetype=mips
+" MIPS
+
+hi Folded ctermbg=233
+" Folding
+
+nnoremap <Leader>w <C-w>
+" C-w
+
+nnoremap <leader>n :NERDTreeToggle<CR>

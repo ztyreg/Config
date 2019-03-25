@@ -158,3 +158,22 @@ alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
 # subl
 export PATH=/Library/SublimeText/bin:$PATH
+
+# vivado
+export PATH="/Users/zty/Ubuntu/Xilinx/Vivado/2018.3/bin:$PATH"
+
+# ctags
+alias ctags="/usr/local/Cellar/ctags/5.8_1/bin/ctags"
+
+# course
+alias cs="/Users/zty/Documents/Courses"
+
+# mysql
+alias sql="/usr/local/mysql/bin/mysql -u root -p"
+alias mysql="/usr/local/mysql/bin/mysql"
+
+# macvim
+alias mvim="/Applications/MacVim.app/Contents/bin/mvim"
+
+# mariadb
+alias mariadb="/usr/local/Cellar/mariadb/10.3.13/bin/mysql -u root -p"

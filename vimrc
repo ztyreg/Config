@@ -126,6 +126,7 @@ Plug 'ARM9/mips-syntax-vim'
 Plug 'vim-scripts/SQLComplete.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'qpkorr/vim-bufkill'
+Plug 'tpope/vim-obsession'
 call plug#end()
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'

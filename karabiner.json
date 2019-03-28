@@ -495,7 +495,7 @@
                                     "key_code": "u",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
+                                            "left_shift",
                                             "right_command",
                                             "right_control",
                                             "right_shift",
@@ -505,9 +505,10 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "page_up",
+                                        "key_code": "left_arrow",
                                         "modifiers": [
-                                            "left_shift"
+                                            "left_shift",
+                                            "left_option"
                                         ]
                                     }
                                 ],
@@ -540,7 +541,7 @@
                                     "key_code": "i",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
+                                            "left_shift",
                                             "right_command",
                                             "right_control",
                                             "right_shift",
@@ -550,9 +551,10 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "home",
+                                        "key_code": "right_arrow",
                                         "modifiers": [
-                                            "left_shift"
+                                            "left_shift",
+                                            "left_option"
                                         ]
                                     }
                                 ],
@@ -585,7 +587,7 @@
                                     "key_code": "o",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
+                                            "left_shift",
                                             "right_command",
                                             "right_control",
                                             "right_shift",
@@ -595,8 +597,9 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "end",
+                                        "key_code": "e",
                                         "modifiers": [
+                                            "left_control",
                                             "left_shift"
                                         ]
                                     }
@@ -617,7 +620,10 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "end"
+                                        "key_code": "e",
+                                        "modifiers": [
+                                            "left_control"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -1270,6 +1276,7 @@
                                     "key_code": "y",
                                     "modifiers": {
                                         "mandatory": [
+                                            "left_shift",
                                             "right_command",
                                             "right_control",
                                             "right_shift",
@@ -1279,7 +1286,33 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "home"
+                                        "key_code": "a",
+                                        "modifiers": [
+                                            "left_shift",
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "y",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "right_control",
+                                            "right_shift",
+                                            "right_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": [
+                                            "left_control"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"

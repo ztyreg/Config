@@ -137,7 +137,7 @@ runtime macros/matchit.vim
 
 set pastetoggle=<f5>
 set tabstop=4
-colorscheme industry2
+colorscheme lettuce
 
 " page 162 example
 " set nocompatible

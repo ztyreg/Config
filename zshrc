@@ -173,7 +173,7 @@ alias sql="/usr/local/mysql/bin/mysql -u root -p"
 alias mysql="/usr/local/mysql/bin/mysql"
 
 # macvim
-alias mvim="/Applications/MacVim.app/Contents/bin/mvim -v"
+alias mvim="/Applications/MacVim.app/Contents/bin/mvim"
 
 # mariadb
 alias mariadb="/usr/local/Cellar/mariadb/10.3.13/bin/mysql -u root -p"

@@ -1,3 +1,13 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" learn the vimscript the hard way
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+echo $PWD
+echo "(>^.^<)"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" end learn the vimscript the hard way
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -103,6 +113,23 @@ endif
 
 set nrformats=
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 Plug 'oplatek/Conque-Shell'
 Plug 'tpope/vim-commentary'
@@ -128,6 +155,14 @@ Plug 'vim-scripts/SQLComplete.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'qpkorr/vim-bufkill'
 Plug 'tpope/vim-obsession'
+Plug 'sirver/ultisnips'
+Plug 'vim-airline/vim-airline'
+" snippets and relevant
+Plug 'honza/vim-snippets'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -136,7 +171,7 @@ filetype plugin on
 " Enable plugins
 runtime macros/matchit.vim
 
-set pastetoggle=<f5>
+" set pastetoggle=<f5>
 set tabstop=4
 colorscheme lettuce
 
@@ -151,7 +186,9 @@ colorscheme lettuce
 " noh
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " star search
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 
@@ -166,10 +203,6 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 " & command
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
-" tabs
 
 nnoremap <f5> :!ctags -R<CR>
 " autocmd BufWritePost * call system("ctags -R")
@@ -178,8 +211,6 @@ nnoremap <f5> :!ctags -R<CR>
 nnoremap <buffer> <F9> :w<CR> :exec '!python' shellescape(@%, 1)<cr>
 " python
 
-highlight LineNr ctermfg=grey
-" line number
 
 set grepprg=ack\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
@@ -214,3 +245,68 @@ nnoremap <Leader>w <C-w>
 nnoremap <leader>n :NERDTreeToggle<CR>
 " File tree
 
+hi Normal guibg=NONE ctermbg=NONE
+" transparent background
+
+
+function! ClipboardYank()
+  call system('pbcopy', @@)
+endfunction
+function! ClipboardPaste()
+  let @@ = system('pbpaste')
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" clipboard
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vnoremap <silent> y y:call ClipboardYank()<cr>
+vnoremap <silent> d d:call ClipboardYank()<cr>
+nnoremap <silent> p :call ClipboardPaste()<cr>p
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimtex
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UltiSnips
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsSnippetsDirectories = ['UltiSnips']
+let g:UltiSnipsSnippetsDir = '/Users/zty/.vim/plugged/vim-snippets/UltiSnips'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" window
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set rnu
+highlight LineNr ctermfg=grey
+" line number
+"set number
+" number
+
+" tabs
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" specific to neovim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" conda neovim
+let g:python3_host_prog="/anaconda3/bin/python3"

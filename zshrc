@@ -127,22 +127,24 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
-# anaconda3
-export PATH="/anaconda3/bin:$PATH"
-
 # .
 export PATH="$PATH:."
 
+############################################################
+# python
+############################################################
 # Setting PATH for Python 3.6
 # The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
+export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 
 # added by Anaconda3 5.1.0 installer
 export PATH="/anaconda3/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
+export PATH="/usr/bin:$PATH"
+############################################################
 # typora
+############################################################
 alias typora="open -a typora"
 
 # java
@@ -177,4 +179,7 @@ alias mvim="/Applications/MacVim.app/Contents/bin/mvim"
 
 # mariadb
 alias mariadb="/usr/local/Cellar/mariadb/10.3.13/bin/mysql -u root -p"
+
+# system pip
+alias "systempip=/usr/local/bin/pip"
 

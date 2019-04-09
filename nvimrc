@@ -163,6 +163,8 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
+Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -173,7 +175,7 @@ runtime macros/matchit.vim
 
 " set pastetoggle=<f5>
 set tabstop=4
-colorscheme lettuce
+colorscheme janah
 
 " page 162 example
 " set nocompatible
@@ -204,7 +206,8 @@ xnoremap & :&&<CR>
 " & command
 
 
-nnoremap <f5> :!ctags -R<CR>
+"nnoremap <f5> :!ctags -R<CR>
+nnoremap <f5> :!ctags<CR>
 " autocmd BufWritePost * call system("ctags -R")
 " ctags
 
@@ -267,8 +270,8 @@ nnoremap <silent> p :call ClipboardPaste()<cr>p
 " vimtex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
+"let g:vimtex_view_method='zathura'
+"let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
@@ -285,8 +288,8 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsSnippetsDirectories = ['UltiSnips']
 let g:UltiSnipsSnippetsDir = '/Users/zty/.vim/plugged/vim-snippets/UltiSnips'
 let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<c-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -295,6 +298,7 @@ let g:UltiSnipsEditSplit="vertical"
 " window
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rnu
+set numberwidth=4
 highlight LineNr ctermfg=grey
 " line number
 "set number
@@ -310,3 +314,30 @@ set expandtab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " conda neovim
 let g:python3_host_prog="/anaconda3/bin/python3"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YouCompleteMe
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_autoclose_preview_window_after_completion=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indentation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <LocalLeader>o :OpenIndentToCursorCol<CR>
+command! OpenIndentToCursorCol call append('.', repeat(' ', getcurpos()[2] -1)) | exe "normal j" | startinsert!
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" <c-s> save
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+command -nargs=0 -bar Update if &modified 
+                           \|    if empty(bufname('%'))
+                           \|        browse confirm write
+                           \|    else
+                           \|        confirm write
+                           \|    endif
+                           \|endif
+nnoremap <silent> <C-S> :<C-u>Update<CR>
+

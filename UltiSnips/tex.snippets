@@ -221,3 +221,26 @@ ${2:${VISUAL:code}}
 $0
 endsnippet
 # vim:ft=snippets:
+
+############################################################
+# user defined
+############################################################
+snippet u "superscript"
+^{$1} $0
+endsnippet
+
+snippet d "subscript"
+_{$1} $0
+endsnippet
+
+snippet header "header"
+\documentclass[11pt,a4paper]{article}
+\author{y}
+\title{$1}
+\usepackage{amsmath}
+\begin{document}
+\maketitle
+$0
+\end{document}
+endsnippet
+	

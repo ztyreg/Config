@@ -183,3 +183,8 @@ alias mariadb="/usr/local/Cellar/mariadb/10.3.13/bin/mysql -u root -p"
 # system pip
 alias "systempip=/usr/local/bin/pip"
 
+# remap c-s
+# zsh
+alias nvim="stty stop '' -ixoff ; nvim"
+# `Frozing' tty, so after any command terminal settings will be restored
+ttyctl -f

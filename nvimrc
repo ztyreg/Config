@@ -146,7 +146,7 @@ Plug 'tpope/vim-abolish'
 Plug 'mileszs/ack.vim'
 Plug 'lervag/vimtex'
 Plug 'vim-scripts/CycleColor'
-Plug 'vhda/verilog_systemverilog.vim'
+"Plug 'vhda/verilog_systemverilog.vim'
 Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'vim-scripts/ucf.vim'
 "Plug 'harenome/vim-mipssyntax'
@@ -165,6 +165,9 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
 Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'w0rp/ale'
+Plug 'vim-syntastic/syntastic'
+"Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 call plug#end()
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -275,6 +278,37 @@ let g:tex_flavor='latex'
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
+" working with Skim
+"if has('macunix')
+"    let g:vimtex_view_general_viewer
+"                \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+"elseif has('unix')
+"    let g:vimtex_view_general_viewer
+"                \ = 'zathura'
+"endif
+"let g:vimtex_view_general_options = '-r @line @pdf @tex'
+"
+"" This adds a callback hook that updates Skim after compilation
+"let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
+"function! UpdateSkim(status)
+"	if !a:status | return | endif
+"
+"	let l:out = b:vimtex.out()
+"	let l:tex = expand('%:p')
+"	let l:cmd = [g:vimtex_view_general_viewer, '-r']
+"	if !empty(system('pgrep Skim'))
+"		call extend(l:cmd, ['-g'])
+"	endif
+"	if has('nvim')
+"		call jobstart(l:cmd + [line('.'), l:out, l:tex])
+"	elseif has('job')
+"		call job_start(l:cmd + [line('.'), l:out, l:tex])
+"	else
+"		call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
+"	endif
+"endfunction
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -288,8 +322,8 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsSnippetsDirectories = ['UltiSnips']
 let g:UltiSnipsSnippetsDir = '/Users/zty/.vim/plugged/vim-snippets/UltiSnips'
 let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<c-b>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
+let g:UltiSnipsJumpForwardTrigger = '<c-f>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -340,4 +374,21 @@ command -nargs=0 -bar Update if &modified
                            \|    endif
                            \|endif
 nnoremap <silent> <C-S> :<C-u>Update<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"let g:syntastic_verilog_checkers = ['iverilog']
+let g:syntastic_c_checkers = ['gcc']
+let g:syntastic_tex_checkers = []
 

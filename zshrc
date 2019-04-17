@@ -122,6 +122,7 @@ alias typora="open -a typora"
 
 # connect to lab server
 alias lab="ssh -p 6666 root@10.71.115.211"
+alias lab2="ssh zty@10.71.115.8"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -138,7 +139,7 @@ export PATH="$PATH:."
 export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 
 # added by Anaconda3 5.1.0 installer
-export PATH="/anaconda3/bin:$PATH"
+# export PATH="/anaconda3/bin:$PATH"  # commented out by conda initialize
 export PATH="/usr/local/bin:$PATH"
 
 export PATH="/usr/bin:$PATH"
@@ -188,3 +189,20 @@ alias "systempip=/usr/local/bin/pip"
 alias nvim="stty stop '' -ixoff ; nvim"
 # `Frozing' tty, so after any command terminal settings will be restored
 ttyctl -f
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+export PYTHONPATH="/lib/python3.5/site-packages/:$PYTHONPATH"
+

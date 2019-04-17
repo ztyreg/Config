@@ -119,6 +119,9 @@ $0
 endsnippet
 
 snippet cha "Chapter" b
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ${3:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{${1:chapter name}}%
 \label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
@@ -126,6 +129,7 @@ $0
 endsnippet
 
 snippet sec "Section"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{${1:${VISUAL:section name}}}%
 \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
@@ -133,6 +137,7 @@ $0
 endsnippet
 
 snippet sec* "Section"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{${1:${VISUAL:section name}}}%
 \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
@@ -141,6 +146,7 @@ endsnippet
 
 
 snippet sub "Subsection"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{${1:${VISUAL:subsection name}}}%
 \label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
@@ -148,6 +154,7 @@ $0
 endsnippet
 
 snippet sub* "Subsection"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{${1:${VISUAL:subsection name}}}%
 \label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
@@ -155,6 +162,7 @@ ${0}
 endsnippet
 
 snippet ssub "Subsubsection"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{${1:${VISUAL:subsubsection name}}}%
 \label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
@@ -162,6 +170,7 @@ $0
 endsnippet
 
 snippet ssub* "Subsubsection"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{${1:${VISUAL:subsubsection name}}}%
 \label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
@@ -225,11 +234,11 @@ endsnippet
 # user defined
 ############################################################
 snippet u "superscript"
-^{$1} $0
+^{$1}$0
 endsnippet
 
-snippet d "subscript"
-_{$1} $0
+snippet l "subscript"
+_{$1}$0
 endsnippet
 
 snippet header "header"
@@ -243,22 +252,76 @@ $0
 \end{document}
 endsnippet
 	
-snippet text "description"
-\text$1{$2} $0
+snippet ti "italian"
+\textit{$1}$0
+endsnippet
+
+snippet tb "bold"
+\textbf{$1}$0
 endsnippet
 
 snippet ul "underline"
-\underline{$1} $0
+\underline{$1}$0
 endsnippet
 	
-snippet i "description"
+snippet ol "overline"
+\overline{$1}$0
+endsnippet
+
+snippet i "in line"
 $$1$$0
 endsnippet
 	
-snippet bq "description"
+snippet bq "equation"
 \begin{equation}
 	$1
 \end{equation}
 $0
 endsnippet
+	
+snippet mb "bold"
+\mathbf{$1}$0
+endsnippet
+
+snippet ra "rightarrow"
+\rightarrow
+endsnippet
+
+snippet Ra "rightarrow"
+\Rightarrow
+endsnippet
+
+snippet la "rightarrow"
+\leftarrow
+endsnippet
+
+snippet La "rightarrow"
+\Leftarrow
+endsnippet
+
+snippet tiq "text in equation"
+\text{ $1 }$0
+endsnippet
+	
+snippet cb "curly brackets"
+\\{ $1 \\}$0
+endsnippet
+
+snippet aa "greek alpha"
+\alpha
+endsnippet
+
+snippet bb "greek beta"
+\beta
+endsnippet
+	
+snippet pp "pi"
+\pi
+endsnippet
+
+snippet PP "Pi"
+\Pi
+endsnippet
+	
+	
 	

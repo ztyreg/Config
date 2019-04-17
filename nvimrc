@@ -1,13 +1,77 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " learn the vimscript the hard way
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
+" 1 Echoing Messages
+""""""""""""""""""""""""""""""
 echo $PWD
 echo "(>^.^<)"
+""""""""""""""""""""""""""""""
+" 2 Setting Options
+""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
+" 3 Basic Mapping
+""""""""""""""""""""""""""""""
+" Comments do not work after the map
+" move one line up/down
+noremap <space> viw
+noremap - ddp
+noremap _ kddp
+""""""""""""""""""""""""""""""
+" 4 Modal Mapping
+""""""""""""""""""""""""""""""
+" convert to uppercase
+inoremap <LocalLeader>u <esc>viwU
+" nmap <LocalLeader>u viwU
+""""""""""""""""""""""""""""""
+" 5 Strict Mapping
+""""""""""""""""""""""""""""""
+" The danger of recursing
+""""""""""""""""""""""""""""""
+" 6 Leaders
+""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-" end learn the vimscript the hard way
-""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Default settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -167,7 +231,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for':
 Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'w0rp/ale'
 Plug 'vim-syntastic/syntastic'
+Plug 'vim-scripts/dbext.vim'
+Plug 'majutsushi/tagbar'
 "Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'chrisbra/csv.vim'
 call plug#end()
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -245,10 +312,8 @@ au BufNewFile,BufRead *.s,*.S set filetype=mips
 hi Folded ctermbg=233
 " Folding
 
-nnoremap <Leader>w <C-w>
-" C-w
-
 nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
 " File tree
 
 hi Normal guibg=NONE ctermbg=NONE
@@ -342,6 +407,7 @@ highlight LineNr ctermfg=grey
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set cursorline
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " specific to neovim
@@ -364,17 +430,9 @@ command! OpenIndentToCursorCol call append('.', repeat(' ', getcurpos()[2] -1)) 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " <c-s> save
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" If the current buffer has never been saved, it will have no name,
-" call the file browser to save it, otherwise just save it.
-command -nargs=0 -bar Update if &modified 
-                           \|    if empty(bufname('%'))
-                           \|        browse confirm write
-                           \|    else
-                           \|        confirm write
-                           \|    endif
-                           \|endif
-nnoremap <silent> <C-S> :<C-u>Update<CR>
-
+nnoremap <c-s> :w <CR>
+nnoremap <c-q> :wq <CR>
+inoremap <c-s> <esc>:w <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic

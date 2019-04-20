@@ -16,7 +16,7 @@ echo "(>^.^<)"
 " move one line up/down
 noremap <space> viw
 noremap - ddp
-noremap _ kddp
+noremap _ kddpk
 """"""""""""""""""""""""""""""
 " 4 Modal Mapping
 """"""""""""""""""""""""""""""
@@ -312,7 +312,15 @@ au BufNewFile,BufRead *.s,*.S set filetype=mips
 hi Folded ctermbg=233
 " Folding
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>n :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
+
+
+
+
 nnoremap <leader>t :TagbarToggle<CR>
 " File tree
 
@@ -320,6 +328,10 @@ hi Normal guibg=NONE ctermbg=NONE
 " transparent background
 
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" clipboard
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! ClipboardYank()
   call system('pbcopy', @@)
 endfunction
@@ -327,9 +339,6 @@ function! ClipboardPaste()
   let @@ = system('pbpaste')
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" clipboard
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vnoremap <silent> y y:call ClipboardYank()<cr>
 vnoremap <silent> d d:call ClipboardYank()<cr>
 nnoremap <silent> p :call ClipboardPaste()<cr>p
@@ -386,7 +395,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsSnippetsDirectories = ['UltiSnips']
 let g:UltiSnipsSnippetsDir = '/Users/zty/.vim/plugged/vim-snippets/UltiSnips'
-let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsExpandTrigger = '<c-c>'
 let g:UltiSnipsJumpForwardTrigger = '<c-f>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
 

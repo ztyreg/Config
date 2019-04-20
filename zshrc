@@ -206,3 +206,5 @@ unset __conda_setup
 # <<< conda initialize <<<
 export PYTHONPATH="/lib/python3.5/site-packages/:$PYTHONPATH"
 
+alias fn="find . -name"
+alias gn="grep -Hn"

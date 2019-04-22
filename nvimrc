@@ -130,7 +130,6 @@ endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
@@ -235,6 +234,8 @@ Plug 'vim-scripts/dbext.vim'
 Plug 'majutsushi/tagbar'
 "Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'chrisbra/csv.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-scripts/UnconditionalPaste'
 call plug#end()
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -245,7 +246,7 @@ runtime macros/matchit.vim
 
 " set pastetoggle=<f5>
 set tabstop=4
-colorscheme janah
+colorscheme jellybeans
 
 " page 162 example
 " set nocompatible
@@ -324,7 +325,7 @@ let g:NERDTreeWinPos = "right"
 nnoremap <leader>t :TagbarToggle<CR>
 " File tree
 
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 " transparent background
 
 
@@ -436,6 +437,9 @@ let g:ycm_autoclose_preview_window_after_completion=1
 nnoremap <LocalLeader>o :OpenIndentToCursorCol<CR>
 command! OpenIndentToCursorCol call append('.', repeat(' ', getcurpos()[2] -1)) | exe "normal j" | startinsert!
 
+set list lcs=tab:\|\ 
+let g:indentLine_color_dark = 1 " (default: 2)
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " <c-s> save
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -459,3 +463,15 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_c_checkers = ['gcc']
 let g:syntastic_tex_checkers = []
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Font
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Monaco\ Regular:h10
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif

@@ -165,6 +165,9 @@ export PATH=/Library/SublimeText/bin:$PATH
 # vivado
 export PATH="/Users/zty/Ubuntu/Xilinx/Vivado/2018.3/bin:$PATH"
 
+# kaggle
+export PATH="/Users/zty/.local/bin/:$PATH"
+
 # ctags
 alias ctags="/usr/local/Cellar/ctags/5.8_1/bin/ctags"
 
@@ -208,3 +211,5 @@ export PYTHONPATH="/lib/python3.5/site-packages/:$PYTHONPATH"
 
 alias fn="find . -name"
 alias gn="grep -Hn"
+
+alias ant="/Library/Java/apache-ant-1.10.5/bin/ant"
